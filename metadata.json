@@ -1,0 +1,7 @@
+{
+  "name": "CONCURSADOS",
+  "description": "O app definitivo de estudos para concursos militares e civis, impulsionado por IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
