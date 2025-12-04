@@ -30,18 +30,23 @@
             animation: {
               'spin-slow': 'spin 3s linear infinite',
               'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'typewriter': 'typing 2s steps(40, end)',
               'blink': 'blink-caret .75s step-end infinite',
+              'menu-enter': 'menuSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scanline': 'scanline 8s linear infinite',
             },
             keyframes: {
-              typing: {
-                '0%': { width: '0' },
-                '100%': { width: '100%' },
-              },
               'blink-caret': {
                 'from, to': { borderColor: 'transparent' },
                 '50%': { borderColor: '#EAB308' },
               },
+              menuSlideIn: {
+                '0%': { transform: 'translateX(100%)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              scanline: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              }
             }
           }
         }
@@ -68,13 +73,29 @@
         background: #52525b; 
       }
       
-      .typewriter-text {
+      .typewriter-effect {
+        display: inline-block;
         overflow: hidden;
-        border-right: .15em solid #EAB308;
         white-space: nowrap;
-        animation: 
-          typing 1s steps(20, end),
-          blink-caret .75s step-end infinite;
+        border-right: 2px solid #EAB308; /* Cursor */
+        max-width: 0;
+        vertical-align: middle;
+        animation: typing 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards, blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from { max-width: 0; }
+        to { max-width: 100%; }
+      }
+
+      .crt-overlay {
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+      
+      .custom-scrollbar {
+        pointer-events: auto !important;
       }
     </style>
   <script type="importmap">

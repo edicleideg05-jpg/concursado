@@ -98,7 +98,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <Layout currentView={view} setView={setView}>
+    <Layout currentView={view} setView={setView} user={user}>
       {view === 'ONBOARDING' && <Onboarding onComplete={handleOnboardingComplete} />}
       
       {view === 'DASHBOARD' && user && (
